@@ -193,5 +193,6 @@ CREATE TABLE voucherModule (
 	startDate DATE,
 	endDate DATE,
 	typeOf VARCHAR(100) CHECK( typeOf = 'food' OR typeOf = 'ship'),
-	valueOfVoucher FLOAT CHECK(valueOfVoucher >= 0)
-	);
+	valueOfVoucher FLOAT CHECK(valueOfVoucher >= 0),
+    productVoucher INT REFERENCES [dbo].[product](i_id)
+);
