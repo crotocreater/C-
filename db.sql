@@ -169,3 +169,29 @@ CREATE TABLE OrderDetails (
     FOREIGN KEY (SizeID) REFERENCES Sizes(Size_ID),
     FOREIGN KEY (ColorID) REFERENCES Colors(Color_ID)
 );
+
+
+CREATE TABLE addressModel (
+	id INT PRIMARY KEY,
+	userID INT REFERENCES dbo.account(i_Id),
+	houseNumber NVARCHAR(1000), 
+	street NVARCHAR(1000),
+	ward NVARCHAR(1000), 
+	district NVARCHAR(1000),
+	city NVARCHAR(1000)
+);
+
+CREATE TABLE messageModule (
+	id INT PRIMARY KEY,
+	userID INT REFERENCES dbo.account(i_Id),
+	userMessage NVARCHAR(1000),
+	timeStamps DATE
+	);
+
+CREATE TABLE voucherModule (
+	id INT PRIMARY KEY,
+	startDate DATE,
+	endDate DATE,
+	typeOf VARCHAR(100) CHECK( typeOf = 'food' OR typeOf = 'ship'),
+	valueOfVoucher FLOAT CHECK(valueOfVoucher >= 0)
+	);
